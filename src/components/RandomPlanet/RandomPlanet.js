@@ -1,54 +1,48 @@
 import React, { Component } from "react";
 import SwapiAPI from "../../services/swapi_api";
+import Preloader from "../Preloader/Preloader";
+import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
+import PlanetView from "./PlanetView";
+
 import "./RandomPlanet.css";
 
 export default class RandomPlanet extends Component {
-  swapiAPI = new SwapiAPI();
-
-  state = {
-    planet: {}
-  };
-
   constructor() {
     super();
     this.updatePlanet();
   }
+
+  swapiAPI = new SwapiAPI();
+
+  state = {
+    planet: {},
+    loading: true,
+    error: false
+  };
   onPlanetLoaded = planet => {
-    console.log(planet);
-    this.setState({ planet });
+    this.setState({ planet, loading: false });
+  };
+  onError = err => {
+    this.setState({ error: true, loading: false });
   };
   updatePlanet() {
     const id = Math.floor(Math.random() * 25) + 2;
-    this.swapiAPI.getPlanet(id).then(this.onPlanetLoaded);
+    this.swapiAPI
+      .getPlanet(id)
+      .then(this.onPlanetLoaded)
+      .catch(this.onError);
   }
   render() {
-    const {
-      planet: { name, population, diameter, rotationPeriod, id }
-    } = this.state;
+    const { planet, loading, error } = this.state;
+    const hasData = !(loading || error);
+    const preloader = loading ? <Preloader /> : null;
+    const planetView = hasData ? <PlanetView planet={planet} /> : null;
+    const errorMsg = error ? <ErrorIndicator /> : null;
     return (
       <div className="random-planet jumbotron rounded">
-        <img
-          className="planet-image"
-          src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-          alt="planet"
-        />
-        <div>
-          <h4>{name}</h4>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <span className="term">Population</span>
-              <span>{population}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Rotation Period</span>
-              <span>{rotationPeriod}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Diameter</span>
-              <span>{diameter}</span>
-            </li>
-          </ul>
-        </div>
+        {preloader}
+        {planetView}
+        {errorMsg}
       </div>
     );
   }
