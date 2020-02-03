@@ -3,19 +3,25 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <div className="header d-flex">
-      <h3>
-        <a href="#">Star DB</a>
+    <div className="app-header">
+      <h3 className="app-brand">
+        <a href="#">SWpedia</a>
       </h3>
-      <ul className="d-flex">
-        <li>
-          <a href="#">People</a>
+      <ul className="nav-list">
+        <li className="nav-list-item">
+          <a href="#" className="nav-link">
+            People
+          </a>
         </li>
-        <li>
-          <a href="#">Planets</a>
+        <li className="nav-list-item">
+          <a href="#" className="nav-link">
+            Planets
+          </a>
         </li>
-        <li>
-          <a href="#">Starships</a>
+        <li className="nav-list-item">
+          <a href="#" className="nav-link">
+            Starships
+          </a>
         </li>
       </ul>
     </div>

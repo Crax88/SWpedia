@@ -1,35 +1,42 @@
 import React, { Component } from "react";
-import SwapiAPI from "../../services/swapi_api";
 import Preloader from "../Preloader/Preloader";
+import ErrorIndicator from "../ErrorIndicator/ErrorIndicator";
 import "./ItemList.css";
 
 export default class ItemList extends Component {
-  swapiApi = new SwapiAPI();
   state = {
-    peopleList: null
+    itemList: null,
+    hasError: false
   };
   componentDidMount() {
-    this.swapiApi.getAllPeople().then(peopleList => {
-      this.setState({ peopleList });
+    const { getData } = this.props;
+    getData().then(itemList => {
+      this.setState({ itemList });
     });
   }
+  componentDidCatch() {
+    this.setState({ hasError: true });
+  }
   renderItems(arr) {
-    return arr.map(({ id, name }) => {
+    return arr.map(item => {
+      const { id } = item;
+      const label = this.props.renderItem(item);
       return (
         <li
           className="list-group-item"
           key={id}
           onClick={() => this.props.onItemSelect(id)}
         >
-          {name}
+          {label}
         </li>
       );
     });
   }
   render() {
-    const { peopleList } = this.state;
-    if (!peopleList) return <Preloader />;
-    const items = this.renderItems(peopleList);
-    return <ul className="list-group item-list">{items}</ul>;
+    if (this.state.hasError) return <ErrorIndicator />;
+    const { itemList } = this.state;
+    if (!itemList) return <Preloader />;
+    const items = this.renderItems(itemList);
+    return <ul className="list-group">{items}</ul>;
   }
 }

@@ -41,7 +41,7 @@ export default class RandomPlanet extends Component {
     const planetView = hasData ? <PlanetView planet={planet} /> : null;
     const errorMsg = error ? <ErrorIndicator /> : null;
     return (
-      <div className="random-planet jumbotron rounded">
+      <div className="random-planet">
         {preloader}
         {planetView}
         {errorMsg}

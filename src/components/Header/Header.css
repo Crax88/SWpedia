@@ -1,4 +1,44 @@
-.header {
+/*
+ * custom styles
+*/
+.app-header,
+.nav-list {
+  display: flex;
+  align-items: center;
+}
+.app-header {
+  width: 95%;
+  margin: 0.5rem auto 1rem auto;
+  background-color: rgba(27, 25, 25, 0.76);
+  padding: 0.5em;
+  border-radius: 0.2em;
+  height: 5rem;
+  border: 1px solid darkgrey;
+  border-radius: 0.2em;
+}
+.app-brand {
+  margin-left: 1rem;
+  padding: 0.2em;
+}
+.app-brand a {
+  color: whitesmoke;
+  font-size: 2rem;
+}
+.nav-list {
+  margin-left: 1.5rem;
+}
+.nav-list-item {
+  margin-left: 0.5rem;
+  line-height: 4rem;
+  padding: 0.3em;
+}
+.nav-link {
+  color: aquamarine;
+}
+.nav-list-item:hover {
+  background-color: rgba(27, 25, 25, 0.973);
+}
+/* .header {
   margin-top: 0.5rem;
   padding-left: 10px;
 }
@@ -26,4 +66,4 @@
 
 .header h3 a:hover {
   color: #00bc8c;
-}
+} */

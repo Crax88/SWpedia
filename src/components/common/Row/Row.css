@@ -1,0 +1,27 @@
+.row {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.col {
+  flex: 50%;
+  max-width: 45%;
+  background-color: rgba(27, 25, 25, 0.76);
+  padding: 0.5em;
+  border: 1px solid darkgrey;
+  border-radius: 0.2em;
+  /* background-color: yellowgreen; */
+}
+@media screen and (max-width: 650px) {
+  /* .row {
+      flex-direction: column;
+      align-items: center;
+    } */
+  .col {
+    flex: 100%;
+    max-width: 100%;
+  }
+}

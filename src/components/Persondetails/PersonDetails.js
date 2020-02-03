@@ -4,9 +4,19 @@ import SwapiAPI from "../../services/swapi_api";
 import "./PersonDetails.css";
 
 const PersonView = ({ person }) => {
-  const { id, name, gender, birthYear, eyeColor } = person;
+  const {
+    id,
+    name,
+    gender,
+    birthYear,
+    eyeColor,
+    height,
+    mass,
+    skinColor,
+    hairColor
+  } = person;
   return (
-    <>
+    <div className="person-wrapper">
       <img
         className="person-image"
         src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
@@ -16,20 +26,36 @@ const PersonView = ({ person }) => {
         <h4>R2-D2</h4>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <span className="term">Gender</span>
-            <span>male</span>
+            <span className="term">Gender:</span>
+            <span>{gender}</span>
           </li>
           <li className="list-group-item">
-            <span className="term">Birth Year</span>
-            <span>43</span>
+            <span className="term">Birth Year:</span>
+            <span>{birthYear}</span>
           </li>
           <li className="list-group-item">
-            <span className="term">Eye Color</span>
-            <span>red</span>
+            <span className="term">Eye Color:</span>
+            <span>{eyeColor}</span>
+          </li>
+          <li className="list-group-item">
+            <span className="term">Height:</span>
+            <span>{height}</span>
+          </li>
+          <li className="list-group-item">
+            <span className="term">Mass:</span>
+            <span>{mass}</span>
+          </li>
+          <li className="list-group-item">
+            <span className="term">Hair Color:</span>
+            <span>{hairColor}</span>
+          </li>
+          <li className="list-group-item">
+            <span className="term">Skin Color:</span>
+            <span>{skinColor}</span>
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 

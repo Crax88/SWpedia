@@ -1,37 +1,37 @@
 export default class SwapiAPI {
   _apiBase = "https://swapi.co/api";
-  async getData(url) {
+  getData = async url => {
     const res = await fetch(`${this._apiBase}${url}`);
     if (!res.ok) {
       throw new Error(`Could not fetch ${url}, recieved ${res.status}`);
     }
     return await res.json();
-  }
-  async getAllPeople() {
+  };
+  getAllPeople = async () => {
     const res = await this.getData("/people/");
-    console.log(res);
     return res.results.map(this._transformPerson);
-  }
-  async getPerson(id) {
+  };
+  getPerson = async id => {
     const person = await this.getData(`/people/${id}/`);
+    console.log(person);
     return this._transformPerson(person);
-  }
-  async getAllPlanets() {
+  };
+  getAllPlanets = async () => {
     const res = await this.getData("/planets/");
     return res.results.map(this._transformPlanet);
-  }
-  async getPlanet(id) {
+  };
+  getPlanet = async id => {
     const planet = await this.getData(`/planets/${id}/`);
     return this._transformPlanet(planet);
-  }
-  async getAllStarships() {
+  };
+  getAllStarships = async () => {
     const res = await this.getData("/starships/");
     return res.results.map(this._transformStarship);
-  }
-  async getStarship(id) {
+  };
+  getStarship = async id => {
     const starship = await this.getData(`/starships/${id}`);
     return this._transformStarship(starship);
-  }
+  };
   _extractId(item) {
     const idRegExp = /\/([0-9]*)\/$/;
     return item.url.match(idRegExp)[1];
@@ -63,8 +63,12 @@ export default class SwapiAPI {
       id: this._extractId(person),
       name: person.name,
       gender: person.gender,
-      birthYear: person.birthYear,
-      eyeColor: person.eyeColor
+      birthYear: person.birth_year,
+      eyeColor: person.eye_color,
+      height: person.height,
+      mass: person.mass,
+      hairColor: person.hair_color,
+      skinColor: person.skin_color
     };
   };
 }

@@ -1,4 +1,62 @@
+/*
+  * custom styles
+*/
+
 .random-planet {
+  margin: 0 auto;
+  width: 95%;
+  background-color: rgba(27, 25, 25, 0.76);
+  padding: 0.5em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid darkgrey;
+  border-radius: 0.2em;
+  height: 30vh;
+}
+.planet-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 50%;
+  max-width: 50%;
+  height: 100%;
+}
+.planet-image {
+  height: auto;
+  width: 100%;
+  max-width: 25vh;
+  border-radius: 0.2em;
+}
+.planet-item:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  color: rgb(207, 204, 204);
+  flex-wrap: wrap;
+}
+.planet-item:nth-child(2) h4 {
+  font-size: 1.5rem;
+}
+.planet-review-item {
+  margin-top: 0.3em;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+.planet-review-item span {
+  margin-left: 4px;
+}
+@media screen and (max-width: 600px) {
+  .planet-item {
+    flex: 100%;
+    max-width: 100%;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+}
+/* .random-planet {
   display: flex;
   padding: 1rem;
 }
@@ -20,4 +78,4 @@
 
 .random-planet .list-group-item .term {
   margin-right: 0.5rem;
-}
+} */
