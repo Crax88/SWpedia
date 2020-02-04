@@ -5,12 +5,12 @@
   padding: 0.2em;
 }
 .item-wrapper img {
-  width: 50%;
+  width: 40%;
   height: auto;
   border-radius: 0.2em;
 }
 .card-body {
-  width: 50%;
+  width: 60%;
   text-align: center;
   color: whitesmoke;
 }
@@ -18,8 +18,14 @@
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
+.card-body .list-group {
+  text-align: left;
+}
 .list-group-item span {
   margin: 0.2em;
+}
+.term {
+  color: aquamarine;
 }
 /* .person-details {
   display: flex;

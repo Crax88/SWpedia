@@ -28,15 +28,17 @@ const mapStarshipMethodsToProps = swapiApi => {
   };
 };
 
-export const PersonList = withSwapiApi(
+const PersonList = withSwapiApi(
   withData(withChildFunction(ItemList, renderName)),
   mapPersonMethodsToProps
 );
-export const PlanetList = withSwapiApi(
+const PlanetList = withSwapiApi(
   withData(withChildFunction(ItemList, renderName)),
   mapPlanetMethodsToProps
 );
-export const StarshipList = withSwapiApi(
+const StarshipList = withSwapiApi(
   withData(withChildFunction(ItemList, renderName)),
   mapStarshipMethodsToProps
 );
+
+export { PersonList, PlanetList, StarshipList };

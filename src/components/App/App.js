@@ -3,10 +3,7 @@ import Header from "../Header/Header";
 import RandomPlanet from "../RandomPlanet/RandomPlanet";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import SwapiAPI from "../../services/swapi_api";
-import { PersonList, StarshipList, PlanetList } from "../swComponents/ItemList";
-import PlanetDetails from "../swComponents/PlanetDetails";
-import PersonDetails from "../swComponents/PersonDetails";
-import StarshipDetails from "../swComponents/StarshipDetails";
+import { PersonsPage, PlanetsPage, StarshipsPage } from "../pages/";
 import { SwapiApiProvider } from "../swapiApiContext/swapiApiContext";
 
 import "./App.css";
@@ -37,12 +34,9 @@ export default class App extends Component {
             >
               Toggle Randon Planet
             </button>
-            <PersonDetails itemId={11} />
-            <PlanetDetails itemId={3} />
-            <StarshipDetails itemId={10} />
-            <PersonList />
-            <StarshipList />
-            <PlanetList />
+            <PersonsPage />
+            <PlanetsPage />
+            <StarshipsPage />
           </div>
         </SwapiApiProvider>
       </ErrorBoundary>
