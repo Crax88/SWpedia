@@ -1,10 +1,10 @@
-.person-wrapper {
+.item-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
   padding: 0.2em;
 }
-.person-wrapper img {
+.item-wrapper img {
   width: 50%;
   height: auto;
   border-radius: 0.2em;
