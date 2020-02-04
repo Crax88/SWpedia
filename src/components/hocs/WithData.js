@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Preloader from "../Preloader/Preloader";
 
-const withData = (View, getData) => {
+const withData = View => {
   return class extends Component {
     state = {
       data: null
     };
     componentDidMount() {
-      getData().then(data => {
+      this.props.getData().then(data => {
         this.setState({ data });
       });
     }

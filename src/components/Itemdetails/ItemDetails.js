@@ -2,13 +2,25 @@ import React, { Component } from "react";
 // import Preloader from "../Preloader/Preloader";
 import "./ItemDetails.css";
 
-const Record = ({ item, field, label }) => {
-  return (
-    <li className="list-group-item">
-      <span className="term">{label}:</span>
-      <span>{item[field]}</span>
-    </li>
-  );
+const Record = props => {
+  const { item } = props;
+  const li = Object.entries(item).map(([key, value]) => {
+    if (key === "id") return null;
+    return (
+      <li key={key} className="list-group-item">
+        <span className="term">{key}</span>
+        <span>{value}</span>
+      </li>
+    );
+  });
+  return <>{li}</>;
+
+  // return (
+  //   <li className="list-group-item">
+  //     <span className="term">{label}:</span>
+  //     <span>{item[field]}</span>
+  //   </li>
+  // );
 };
 export { Record };
 
