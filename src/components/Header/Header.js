@@ -1,27 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
   return (
     <div className="app-header">
       <h3 className="app-brand">
-        <a href="#">SWpedia</a>
+        <Link to="/">SWpedia</Link>
       </h3>
       <ul className="nav-list">
         <li className="nav-list-item">
-          <a href="#" className="nav-link">
+          <Link to="/persons" className="nav-link">
             People
-          </a>
+          </Link>
         </li>
         <li className="nav-list-item">
-          <a href="#" className="nav-link">
+          <Link to="/planets" className="nav-link">
             Planets
-          </a>
+          </Link>
         </li>
         <li className="nav-list-item">
-          <a href="#" className="nav-link">
+          <Link to="/starships" className="nav-link">
             Starships
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

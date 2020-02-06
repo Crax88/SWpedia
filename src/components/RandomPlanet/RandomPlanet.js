@@ -7,6 +7,20 @@ import PlanetView from "./PlanetView";
 import "./RandomPlanet.css";
 
 export default class RandomPlanet extends Component {
+  static defaultProps = {
+    updateInterval: 5000
+  };
+
+  static propTypes = {
+    updateInterval: (props, propName, componentName) => {
+      const value = props[propName];
+      if (typeof value !== "number" && !isNaN(value)) {
+        return null;
+      }
+      return new TypeError(`${componentName}: ${propName} must be number`);
+    }
+  };
+
   swapiAPI = new SwapiAPI();
   state = {
     planet: {},
@@ -16,8 +30,9 @@ export default class RandomPlanet extends Component {
   };
 
   componentDidMount() {
+    const { updateInterval } = this.props;
     this.updatePlanet();
-    const interval = setInterval(this.updatePlanet, 5000);
+    const interval = setInterval(this.updatePlanet, updateInterval);
     this.setState({ interval });
   }
   componentWillUnmount() {
@@ -53,3 +68,6 @@ export default class RandomPlanet extends Component {
     );
   }
 }
+// RandomPlanet.defaultProps = {
+//   updateInterval: 5000
+// };

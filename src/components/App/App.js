@@ -5,7 +5,7 @@ import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import SwapiAPI from "../../services/swapi_api";
 import { PersonsPage, PlanetsPage, StarshipsPage } from "../pages/";
 import { SwapiApiProvider } from "../swapiApiContext/swapiApiContext";
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 export default class App extends Component {
@@ -25,19 +25,36 @@ export default class App extends Component {
     return (
       <ErrorBoundary>
         <SwapiApiProvider value={this.swapiApi}>
-          <div className="app-wrapper">
-            <Header />
-            {randomPlanet}
-            <button
-              className="toggle-random-planet"
-              onClick={this.toggleRandomPlanet}
-            >
-              Toggle Randon Planet
-            </button>
-            <PersonsPage />
-            <PlanetsPage />
-            <StarshipsPage />
-          </div>
+          <Router>
+            <div className="app-wrapper">
+              <Header />
+              {randomPlanet}
+              <button
+                className="toggle-random-planet"
+                onClick={this.toggleRandomPlanet}
+              >
+                Toggle Randon Planet
+              </button>
+              <Route
+                path="/"
+                exact
+                render={() => (
+                  <h2
+                    style={{
+                      margin: "auto",
+                      width: "30vw",
+                      color: "whitesmoke"
+                    }}
+                  >
+                    Welcome to SWpedia
+                  </h2>
+                )}
+              />
+              <Route path="/persons" component={PersonsPage} />
+              <Route path="/planets" component={PlanetsPage} />
+              <Route path="/starships" component={StarshipsPage} />
+            </div>
+          </Router>
         </SwapiApiProvider>
       </ErrorBoundary>
     );

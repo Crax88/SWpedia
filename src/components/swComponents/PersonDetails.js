@@ -16,4 +16,4 @@ const mapApiMethodsToProps = swapiApi => {
     getImageUrl: swapiApi.getPersonImage
   };
 };
-export default withSwapiApi(PersonDetails, mapApiMethodsToProps);
+export default withSwapiApi(mapApiMethodsToProps)(PersonDetails);
