@@ -51,7 +51,7 @@ export default class App extends Component {
                   </h2>
                 )}
               />
-              <Route path="/persons" component={PersonsPage} />
+              <Route path="/persons/:id?" component={PersonsPage} />
               <Route path="/planets" component={PlanetsPage} />
               <Route path="/starships" exact component={StarshipsPage} />
               <Route
