@@ -3,6 +3,7 @@ import "./ItemList.css";
 
 const ItemList = props => {
   const { data, onItemSelect, children: renderLabel } = props;
+  console.log(props);
   const items = data.map(item => {
     const { id } = item;
     const label = renderLabel(item);

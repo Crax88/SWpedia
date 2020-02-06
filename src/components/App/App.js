@@ -7,6 +7,7 @@ import { PersonsPage, PlanetsPage, StarshipsPage } from "../pages/";
 import { SwapiApiProvider } from "../swapiApiContext/swapiApiContext";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
+import { StarshipDetails } from "../swComponents";
 
 export default class App extends Component {
   swapiApi = new SwapiAPI();
@@ -52,7 +53,14 @@ export default class App extends Component {
               />
               <Route path="/persons" component={PersonsPage} />
               <Route path="/planets" component={PlanetsPage} />
-              <Route path="/starships" component={StarshipsPage} />
+              <Route path="/starships" exact component={StarshipsPage} />
+              <Route
+                path="/starships/:id"
+                render={({ match, location, history }) => {
+                  const { id } = match.params;
+                  return <StarshipDetails itemId={id} />;
+                }}
+              />
             </div>
           </Router>
         </SwapiApiProvider>
